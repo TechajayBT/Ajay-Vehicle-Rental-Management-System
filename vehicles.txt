@@ -1,0 +1,3 @@
+Veh21,Bike,Suzuki,500.0,true
+Veh22,Bike,TVS,1000.0,true
+Veh23,Bike,Jupiter,600.0,true
