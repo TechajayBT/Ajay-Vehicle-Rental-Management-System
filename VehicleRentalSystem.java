@@ -1,5 +1,6 @@
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -298,106 +299,115 @@ public class VehicleRentalSystem {
             while (true) {
                 system.displayMenu();
                 System.out.print("Enter your choice: ");
-                int choice = scanner.nextInt();
+                int choice;
+                try {
+                    choice = scanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.err.println("Invalid input. Please enter a number.");
+                    scanner.nextLine(); // Clear the invalid input
+                    continue;
+                }
                 scanner.nextLine(); // Consume newline
-
-                switch (choice) {
-                    case 1:
-                        System.out.print("Enter vehicle ID: ");
-                        String vehicleID = scanner.nextLine();
-                        System.out.print("Enter vehicle type: ");
-                        String type = scanner.nextLine();
-                        System.out.print("Enter vehicle brand: ");
-                        String brand = scanner.nextLine();
-                        System.out.print("Enter rental rate per day: Rs. ");
-                        double rentalRate = scanner.nextDouble();
-                        scanner.nextLine(); // Consume newline
-                        system.addVehicle(new Vehicle(vehicleID, type, brand, rentalRate));
-                        break;
-                    case 2:
-                        System.out.print("Enter vehicle ID to remove: ");
-                        vehicleID = scanner.nextLine();
-                        system.removeVehicle(vehicleID);
-                        break;
-                    case 3:
-                        System.out.print("Enter customer ID: ");
-                        String customerID = scanner.nextLine();
-                        System.out.print("Enter customer name: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Enter contact number: ");
-                        String contactNumber = scanner.nextLine();
-                        system.addCustomer(new Customer(customerID, name, contactNumber));
-                        break;
-                    case 4:
-                        System.out.print("Enter vehicle ID to rent: ");
-                        vehicleID = scanner.nextLine();
-                        System.out.print("Enter customer ID: ");
-                        customerID = scanner.nextLine();
-                        System.out.print("Enter rental date (YYYY-MM-DD): ");
-                        LocalDate rentalDate = LocalDate.parse(scanner.nextLine());
-                        try {
-                            String rentalID = system.rentVehicle(vehicleID, customerID, rentalDate);
-                            System.out.println("Rental ID: " + rentalID);
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                        break;
-                    case 5:
-                        System.out.print("Enter rental ID to return: ");
-                        String rentalID = scanner.nextLine();
-                        System.out.print("Enter return date (YYYY-MM-DD): ");
-                        LocalDate returnDate = LocalDate.parse(scanner.nextLine());
-                        try {
-                            system.returnVehicle(rentalID, returnDate);
-                        } catch (Exception e) {
-                            System.out.println(e.getMessage());
-                        }
-                        break;
-                    case 6:
-                        system.viewAllVehicles();
-                        break;
-                    case 7:
-                        System.out.print("Enter vehicle ID to search: ");
-                        vehicleID = scanner.nextLine();
-                        system.searchVehicle(vehicleID);
-                        break;
-                    case 8:
-                        system.sortVehiclesByRentalRate();
-                        break;
-                    case 9:
-                        system.sortVehiclesByType();
-                        break;
-                    case 10:
-                        system.sortVehiclesByAvailability();
-                        break;
-                    case 11:
-                        system.saveAllData();
-                        System.out.println("Data saved successfully.");
-                        break;
-                    case 12:
-                        system.loadAllData();
-                        System.out.println("Data loaded successfully.");
-                        break;
-                    case 13:
-                        system.viewAllCustomers();
-                        break;
-                    case 14:
-                        System.out.print("Enter customer ID to delete: ");
-                        customerID = scanner.nextLine();
-                        system.deleteCustomer(customerID);
-                        break;
-                    case 0:
-                        system.saveAllData(); // Save data before exiting
-                        System.out.println("Thank you for using the Vehicle Rental Management System. Goodbye!");
-                        scanner.close();
-                        return;
-                    default:
-                        System.out.println("Invalid choice. Please try again.");
+                try {
+                    switch (choice) {
+                        case 1:
+                            System.out.print("Enter vehicle ID: ");
+                            String vehicleID = scanner.nextLine();
+                            System.out.print("Enter vehicle type: ");
+                            String type = scanner.nextLine();
+                            System.out.print("Enter vehicle brand: ");
+                            String brand = scanner.nextLine();
+                            System.out.print("Enter rental rate per day: Rs. ");
+                            double rentalRate = scanner.nextDouble();
+                            scanner.nextLine(); // Consume newline
+                            system.addVehicle(new Vehicle(vehicleID, type, brand, rentalRate));
+                            break;
+                        case 2:
+                            System.out.print("Enter vehicle ID to remove: ");
+                            vehicleID = scanner.nextLine();
+                            system.removeVehicle(vehicleID);
+                            break;
+                        case 3:
+                            System.out.print("Enter customer ID: ");
+                            String customerID = scanner.nextLine();
+                            System.out.print("Enter customer name: ");
+                            String name = scanner.nextLine();
+                            System.out.print("Enter contact number: ");
+                            String contactNumber = scanner.nextLine();
+                            system.addCustomer(new Customer(customerID, name, contactNumber));
+                            break;
+                        case 4:
+                            System.out.print("Enter vehicle ID to rent: ");
+                            vehicleID = scanner.nextLine();
+                            System.out.print("Enter customer ID: ");
+                            customerID = scanner.nextLine();
+                            System.out.print("Enter rental date (YYYY-MM-DD): ");
+                            LocalDate rentalDate = LocalDate.parse(scanner.nextLine());
+                            try {
+                                String rentalID = system.rentVehicle(vehicleID, customerID, rentalDate);
+                                System.out.println("Rental ID: " + rentalID);
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                            break;
+                        case 5:
+                            System.out.print("Enter rental ID to return: ");
+                            String rentalID = scanner.nextLine();
+                            System.out.print("Enter return date (YYYY-MM-DD): ");
+                            LocalDate returnDate = LocalDate.parse(scanner.nextLine());
+                            try {
+                                system.returnVehicle(rentalID, returnDate);
+                            } catch (Exception e) {
+                                System.out.println(e.getMessage());
+                            }
+                            break;
+                        case 6:
+                            system.viewAllVehicles();
+                            break;
+                        case 7:
+                            System.out.print("Enter vehicle ID to search: ");
+                            vehicleID = scanner.nextLine();
+                            system.searchVehicle(vehicleID);
+                            break;
+                        case 8:
+                            system.sortVehiclesByRentalRate();
+                            break;
+                        case 9:
+                            system.sortVehiclesByType();
+                            break;
+                        case 10:
+                            system.sortVehiclesByAvailability();
+                            break;
+                        case 11:
+                            system.saveAllData();
+                            System.out.println("Data saved successfully.");
+                            break;
+                        case 12:
+                            system.loadAllData();
+                            System.out.println("Data loaded successfully.");
+                            break;
+                        case 13:
+                            system.viewAllCustomers();
+                            break;
+                        case 14:
+                            System.out.print("Enter customer ID to delete: ");
+                            customerID = scanner.nextLine();
+                            system.deleteCustomer(customerID);
+                            break;
+                        case 0:
+                            system.saveAllData(); // Save data before exiting
+                            System.out.println("Thank you for using the Vehicle Rental Management System. Goodbye!");
+                            scanner.close();
+                            return;
+                        default:
+                            System.out.println("Invalid choice. Please try again.");
+                    }
+                } catch (DateTimeParseException e) {
+                    System.err.println("Invalid date format. Please use YYYY-MM-DD.");
                 }
             }
-        }
-        catch(Exception e){
-            System.out.println(e);
+        }catch(Exception e) {
+            System.err.println("An error occurred: " + e.getMessage());
         }
     }
 }
