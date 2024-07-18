@@ -1,7 +1,7 @@
 # Vehicle Rental Management System
 
 ## Overview
-The Vehicle Rental Management System is a console-based application developed using core Java. This system is designed to streamline the process of renting vehicles, managing customers, processing payments, and handling vehicle maintenance. It offers a range of features to facilitate efficient management of a vehicle rental business.
+The Vehicle Rental Management System is a console-based application developed using core Java. This system is designed to streamline the process of renting vehicles, managing customers. It offers a range of features to facilitate efficient management of a vehicle rental business
 
 ## Features
 - **Add/Remove Vehicles**: Easily add and remove vehicles from the system with relevant details.
@@ -12,9 +12,7 @@ The Vehicle Rental Management System is a console-based application developed us
 - **Sort Vehicles**: Sort vehicles by rental rate, type, and availability.
 - **Save/Load Data**: Persist data to files and load data on startup to maintain continuity.
 - **Exception Handling**: Robust error handling for various scenarios to ensure smooth operation.
-- **Reservation System**: Allow customers to reserve vehicles in advance.
-- **Vehicle Maintenance Tracking**: Track and schedule maintenance for vehicles.
-- **Reporting and Analytics**: Generate reports on rental history, revenue, and vehicle usage.
+
 
 ## Technologies Used
 - **Programming Language**: Java
