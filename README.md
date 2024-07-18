@@ -65,4 +65,4 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 - Flowcharts created with Eraser.io.
 
 ## Contact
-For any inquiries or issues, please open an issue on the GitHub repository or contact (mailto:ajaysinghbartwal98@gmail.com).
+For any inquiries or issues, please open an issue on the GitHub repository or contact (ajaysinghbartwal98@gmail.com).
