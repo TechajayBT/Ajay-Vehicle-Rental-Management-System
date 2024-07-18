@@ -40,11 +40,11 @@ The Vehicle Rental Management System is a console-based application developed us
 ### Running the Application
 1. Compile the Java files:
     ```bash
-    javac VehicleRentalSystem.java
+    javac Run.java
     ```
 2. Run the application:
     ```bash
-    java VehicleRentalSystem
+    java Run
     ```
 
 ## Usage
