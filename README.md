@@ -32,7 +32,7 @@ The Vehicle Rental Management System is a console-based application developed us
     ```
 2. Navigate to the project directory:
     ```bash
-    cd vehicle-rental-management-system
+    cd data/vehicle-rental-management-system
     ```
 
 ### Running the Application
